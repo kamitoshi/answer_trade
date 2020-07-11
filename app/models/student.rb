@@ -12,4 +12,20 @@ class Student < ApplicationRecord
   validates :name, presence: true
   validates :grade, presence: true
 
+  def thumnail_image
+    if self.image.blank?
+      "no_image.png"
+    else
+      self.image.thumnail.to_s
+    end
+  end
+
+  def info_image
+    if self.image.blank?
+      "no_image.png"
+    else
+      self.image.thumb200.to_s
+    end
+  end
+
 end

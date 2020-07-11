@@ -1,2 +1,23 @@
-<h1>Students#show</h1>
-<p>Find me in app/views/students/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="student_image-box center">
+        <%= image_tag @student.info_image, id:"img-prev" %>
+      </div>
+      <div class="student_info-box">
+        <div class="name center">
+          <h3><%= @student.name %></h3>
+        </div>
+        <div class="grade">
+          <h4>学年：<%= @student.grade_i18n %></h4>
+        </div>
+        <div class="introduction">
+          <h4>自己紹介文</h4>
+          <div class="content border" style="height:300px">
+            <p><%= @student.introduction %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

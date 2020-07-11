@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="title">プロフィール変更</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <div class="student_edit-main">
+        <%= form_for @student do |f|%>
+
+          <div class="field pa-y-30">
+            <%= f.label :name, "ニックネーム" %>
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control", placeholder: "ニックネーム" %>
+          </div>
+
+          <div class="field pa-y-30">
+            <%= f.label :grade, "学年" %><br>
+            <% Student.grades_i18n.invert.each do |grade| %>
+              <div class="radio_btn dis-ib pa-10">
+                <%= f.radio_button :grade, grade[1] %>
+                <%= f.label :grade, grade[0], value: grade[1] %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="field pa-y-30">
+            <%= f.label :email, "メールアドレス" %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+          </div>
+
+          <div class="field pa-y-30">
+            <%= f.label :introduction, "自己紹介文" %>
+            <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", class:"form-control", style:"height:300px" %>
+          </div>
+
+          <p class="mini-title pa-y-30"><span>学歴</span></p>
+
+          <div class="field pa-y-30">
+            <%= f.label :primary_school, "小学校名" %><br />
+            <%= f.number_field :primary_school, autofocus: true, autocomplete: "primary_school", class:"form-control", placeholder: "〇〇区立〇〇小学校" %>
+          </div>
+
+          <div class="field pa-y-30">
+            <%= f.label :middle_school, "中学校名" %><br />
+            <%= f.text_field :middle_school, autofocus: true, autocomplete: "middle_school", class:"form-control", placeholder: "〇〇区立〇〇中学校" %>
+          </div>
+
+          <div class="field pa-y-30">
+            <%= f.label :high_school, "高等学校名" %><br />
+            <%= f.text_field :high_school, autofocus: true, autocomplete: "high_school", class:"form-control", placeholder: "〇〇都立〇〇高等学校" %>
+          </div>
+
+          <div class="actions right">
+            <%= f.submit "変更する", class:"btn btn-primary" %>
+          </div>
+          
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-4 pa-30">
+      <div class="student_edit-side wid-70 ma-a">
+        <%= link_to "パスワード変更", edit_student_registration_path, class:"btn btn-outline-info wid-100 ma-y-10" %>
+        <%= link_to "退会する", student_path(current_student), method: :delete, class:"btn btn-danger wid-100 ma-y-10" %>
+      </div>
+    </div>
+
+  </div>
+</div>
+

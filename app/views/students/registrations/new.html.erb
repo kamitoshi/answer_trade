@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <h2>新規登録</h2>
+
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            
+            <div class="field pa-20">
+              <%= f.label :name, "ニックネーム" %>
+              <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control", placeholder: "ニックネーム" %>
+            </div>
+
+            <div class="field pa-20">
+              <%= f.label :grade, "学年" %><br>
+              <% Student.grades_i18n.invert.each do |grade| %>
+                <div class="radio_btn dis-ib pa-10">
+                  <%= f.radio_button :grade, grade[1] %>
+                  <%= f.label :grade, grade[0], value: grade[1] %>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="field pa-20">
+              <%= f.label :email, "メールアドレス" %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+            </div>
+
+            
+
+            <div class="field pa-20">
+              <%= f.label :introduction, "自己紹介文" %>
+              <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", class:"form-control", style:"height:300px" %>
+            </div>
+
+            <div class="field pa-20">
+              <%= f.label :password, "パスワード" %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %>文字以上)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
+            </div>
+
+            <div class="field pa-20">
+              <%= f.label :password_confirmation, "パスワード確認" %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+            </div>
+
+            <p class="mini-title pa-y-30"><span>学歴（任意）</span></p>
+
+            <div class="field pa-20">
+              <%= f.label :primary_school, "小学校" %><br />
+              <%= f.number_field :primary_school, autofocus: true, autocomplete: "primary_school", class:"form-control", placeholder: "〇〇区立〇〇小学校" %>
+            </div>
+
+            <div class="field pa-20">
+              <%= f.label :middle_school, "中学校" %><br />
+              <%= f.text_field :middle_school, autofocus: true, autocomplete: "middle_school", class:"form-control", placeholder: "〇〇区立〇〇中学校" %>
+            </div>
+
+            <div class="field pa-20">
+              <%= f.label :high_school, "高等学校" %><br />
+              <%= f.text_field :high_school, autofocus: true, autocomplete: "high_school", class:"form-control", placeholder: "〇〇都立〇〇高等学校" %>
+            </div>
+
+            <div class="actions right">
+              <%= f.submit "新規登録", class:"btn btn-primary" %>
+            </div>
+          <% end %>
+
+          <%= render "devise/shared/links" %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

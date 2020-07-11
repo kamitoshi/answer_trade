@@ -1,2 +1,46 @@
-<h1>Students#index</h1>
-<p>Find me in app/views/students/index.html.erb</p>
+ <div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="student_index-box">
+        <h3 class="title">登録生徒一覧</h3>
+        <table class="table center">
+          <% if @students.any? %>
+            <thead>
+              <tr class="active">
+                <th width="10%"></th>
+                <th width="20%">ニックネーム</th>
+                <th width="20%">学年</th>
+                <th width="25%">投稿動画数</th>
+                <th width="5%">国語</th>
+                <th width="5%">数学</th>
+                <th width="5%">社会</th>
+                <th width="5%">理科</th>
+                <th width="5%">英語</th>
+              </tr>
+            </thead>
+            <% @students.each do |student| %>
+              <tbody>
+                <tr>
+                  <td class="right">
+                    <%= image_tag student.thumnail_image, class:"circle", size: "50x50" %>
+                  </td>
+                  <td><%= link_to student.name, student_path(student) %></td>
+                  <td><%= student.grade_i18n %></td>
+                  <td></td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                </tr>
+              </tbody>
+            <% end %>
+          <% else %>
+            <p class="ma-t-30 center">該当しませんでした</p>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+ </div> 
+    

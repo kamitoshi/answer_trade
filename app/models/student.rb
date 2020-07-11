@@ -24,7 +24,7 @@ class Student < ApplicationRecord
     if self.image.blank?
       "no_image.png"
     else
-      self.image.thumb200.to_s
+      self.image.info.to_s
     end
   end
 

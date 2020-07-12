@@ -1,7 +1,6 @@
-class Request < ApplicationRecord
+class Video < ApplicationRecord
   belongs_to :student
-  
-  has_many :videos, dependent: :nullify
+  belongs_to :request, optional: true
 
   enum academic_stage:{
     primary: 0, middle: 1, high: 2
@@ -22,6 +21,7 @@ class Request < ApplicationRecord
   validates :subject, presence: true
   validates :subject_content, presence: true
   validates :title, presence: true
+  # validates :content, presence: true
   validates :detail, presence: true, length:{maximum:500}
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_070817) do
+ActiveRecord::Schema.define(version: 2020_07_12_145912) do
 
   create_table "requests", force: :cascade do |t|
     t.integer "student_id"
@@ -48,6 +48,25 @@ ActiveRecord::Schema.define(version: 2020_07_11_070817) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "request_id"
+    t.integer "academic_stage", null: false
+    t.integer "subject", null: false
+    t.integer "subject_content", null: false
+    t.string "title", null: false
+    t.string "content"
+    t.text "detail"
+    t.integer "count", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_videos_on_request_id"
+    t.index ["student_id"], name: "index_videos_on_student_id"
+    t.index ["subject"], name: "index_videos_on_subject"
+    t.index ["subject_content"], name: "index_videos_on_subject_content"
+    t.index ["title"], name: "index_videos_on_title"
   end
 
 end

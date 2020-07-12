@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student: one
+  request: one
+  academic_stage: 1
+  subject: 1
+  subject_content: 1
+  title: MyString
+  content: MyString
+  detail: MyText
+  count: 1
+
+two:
+  student: two
+  request: two
+  academic_stage: 1
+  subject: 1
+  subject_content: 1
+  title: MyString
+  content: MyString
+  detail: MyText
+  count: 1

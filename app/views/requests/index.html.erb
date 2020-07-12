@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="title">リクエスト一覧</h3>
+      <div class="request_index-box">
+        <% if @requests.any? %>
+          <% @requests.each do |request| %>
+            <div class="request_index-item pa-20 box">
+              <div class="sub-title">
+                <h4><%= link_to request.title, request_path(request) %></h4>
+              </div>
+              <div class="request_info">
+                <div class="level">
+                  <p>必要レベル：<%= request.academic_stage_i18n %></p>
+                </div>
+                <div class="subject">
+                  <p>教科：<%= request.subject_i18n %><span class="pa-l-20">分野：<%= request.subject_content_i18n %></span></p>
+                </div>
+                <div class="review">
+                  評価(○件)：
+                </div>
+                <div class="post">
+                  <span>投稿者：<%= request.student.name %></span><br>
+                  <span>投稿日時：<%= request.created_at.strftime("%Y/%m/%d %H:%M") %></span>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

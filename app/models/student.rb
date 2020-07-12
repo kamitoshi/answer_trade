@@ -9,6 +9,8 @@ class Student < ApplicationRecord
     m_1: 7, m_2: 8, m_3: 9, h_1: 10, h_2: 11, h_3: 12, other: 13
   }
 
+  has_many :requests, dependent: :destroy
+
   validates :name, presence: true
   validates :grade, presence: true
 

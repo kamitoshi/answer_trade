@@ -3,53 +3,7 @@
     <div class="col-12">
       <h3 class="title">リクエスト作成</h3>
       <div class="request_form-box">
-        <%= form_for @request do |f| %>
-
-          <div class="field pa-y-30">
-            <%= f.label :academic_stage, "対象レベル" %><br>
-            <% Request.academic_stages_i18n.invert.each do |academic_stage| %>
-              <div class="radio_btn dis-ib pa-10">
-                <%= f.radio_button :academic_stage, academic_stage[1] %>
-                <%= f.label :academic_stage, academic_stage[0], value: academic_stage[1] %>
-              </div>
-            <% end %>
-          </div>
-
-          <div class="field pa-y-30">
-            <%= f.label :subject, "対象教科" %><br>
-            <% Request.subjects_i18n.invert.each do |subject| %>
-              <div class="radio_btn dis-ib pa-10">
-                <%= f.radio_button :subject, subject[1] %>
-                <%= f.label :subject, subject[0], value: subject[1] %>
-              </div>
-            <% end %>
-          </div>
-
-          <div class="field pa-y-30">
-            <%= f.label :subject_content, "対象教科" %><br>
-            <% Request.subject_contents_i18n.invert.each do |subject_content| %>
-              <div class="radio_btn dis-ib pa-10">
-                <%= f.radio_button :subject_content, subject_content[1] %>
-                <%= f.label :subject_content, subject_content[0], value: subject_content[1] %>
-              </div>
-            <% end %>
-          </div>
-
-          <div class="field pa-y-30">
-            <%= f.label :title, "タイトル" %>
-            <%= f.text_field :title, autofocus: true, autocomplete: "title", class:"form-control", placeholder: "【青チャート】p.5 大問1　微分について" %>
-          </div>
-
-          <div class="field pa-y-30">
-            <%= f.label :detail, "質問詳細" %>
-            <%= f.text_area :detail, autofocus: true, autocomplete: "detail", class:"form-control", style:"height:300px" %>
-          </div>
-
-          <div class="actions right">
-            <%= f.submit "リクエストする", class:"btn btn-primary" %>
-          </div>
-
-        <% end %>
+        <%= render "requests/form" %>
       </div>
     </div>
   </div>

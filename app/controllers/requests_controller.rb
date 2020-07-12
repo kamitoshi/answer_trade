@@ -13,7 +13,14 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = current_student.request.build(request_params)
+    @request = current_student.requests.build(request_params)
+    if @request.save
+      flash[:success] = "リクエストしました"
+      redirect_to requests_path
+    else
+      flash.now[:danger] = "リクエストに失敗しました"
+      render :new
+    end
   end
 
   def edit
@@ -55,7 +62,7 @@ class RequestsController < ApplicationController
 
   private
   def request_params
-    params.require(:request).permit(:student_id, :academic_stage, :subject, :subject_content, :detail, :is_active)
+    params.require(:request).permit(:student_id, :academic_stage, :subject, :subject_content, :title, :detail, :is_active)
   end
 
   def set_request

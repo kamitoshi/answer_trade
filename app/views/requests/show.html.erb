@@ -1,2 +1,32 @@
-<h1>Requests#show</h1>
-<p>Find me in app/views/requests/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="request_detail-box">
+        <h3 class="title"><%= @request.title %></h3>
+        <div class="post-date pa-20 right">
+          <span>投稿日時：<%= @request.created_at.strftime("%Y/%m/%d %H:%M") %></span>
+        </div>
+        <hr>
+        <div class="review">
+          評価　〇〇件：
+        </div>
+        <h5 class="title">リクエスト詳細</h5>
+        <div class="level">
+          <p>必要レベル：<%= @request.academic_stage_i18n %></p>
+        </div>
+        <div class="subject">
+          <p>教科：<%= @request.subject_i18n %><span class="pa-l-20">分野：<%= @request.subject_content_i18n %></span></p>
+        </div>
+        <div class="introduction">
+          <p><%= simple_format(@request.detail) %></p>
+        </div>
+        <% if @request.student == current_student %>
+          <div class="link-box pa-10 ma-t-10 right">
+            <span class="ma-r-20"><%= link_to "内容を編集する", edit_request_path(@request), class: "btn btn-primary" %></span>
+            <span><%= link_to "削除", request_path(@request),method: :delete, class: "btn btn-danger" %></span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     registrations: "students/registrations"
   }
   resources :students, only:[:index, :show, :edit, :update, :destroy]
+  resources :requests
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

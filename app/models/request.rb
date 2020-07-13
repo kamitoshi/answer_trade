@@ -1,5 +1,6 @@
 class Request < ApplicationRecord
   belongs_to :student
+  belongs_to :category
   
   has_many :videos, dependent: :nullify
 

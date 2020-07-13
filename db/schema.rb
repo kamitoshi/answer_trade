@@ -12,16 +12,23 @@
 
 ActiveRecord::Schema.define(version: 2020_07_12_145912) do
 
+  create_table "categories", force: :cascade do |t|
+    t.string "subject"
+    t.string "subject_content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "requests", force: :cascade do |t|
     t.integer "student_id"
+    t.integer "category_id"
     t.integer "academic_stage", null: false
-    t.integer "subject", null: false
-    t.integer "subject_content", null: false
     t.string "title", null: false
     t.text "detail"
     t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_requests_on_category_id"
     t.index ["student_id"], name: "index_requests_on_student_id"
   end
 
@@ -53,19 +60,17 @@ ActiveRecord::Schema.define(version: 2020_07_12_145912) do
   create_table "videos", force: :cascade do |t|
     t.integer "student_id"
     t.integer "request_id"
+    t.integer "category_id"
     t.integer "academic_stage", null: false
-    t.integer "subject", null: false
-    t.integer "subject_content", null: false
     t.string "title", null: false
     t.string "content"
     t.text "detail"
     t.integer "count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_videos_on_category_id"
     t.index ["request_id"], name: "index_videos_on_request_id"
     t.index ["student_id"], name: "index_videos_on_student_id"
-    t.index ["subject"], name: "index_videos_on_subject"
-    t.index ["subject_content"], name: "index_videos_on_subject_content"
     t.index ["title"], name: "index_videos_on_title"
   end
 

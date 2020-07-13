@@ -1,6 +1,7 @@
 class Video < ApplicationRecord
   belongs_to :student
   belongs_to :request, optional: true
+  belongs_to :category
 
   enum academic_stage:{
     primary: 0, middle: 1, high: 2

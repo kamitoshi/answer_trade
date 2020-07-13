@@ -62,7 +62,7 @@ class RequestsController < ApplicationController
 
   private
   def request_params
-    params.require(:request).permit(:student_id, :academic_stage, :subject, :subject_content, :title, :detail, :is_active)
+    params.require(:request).permit(:student_id, :category_id, :academic_stage, :title, :detail, :is_active)
   end
 
   def set_request

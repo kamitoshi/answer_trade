@@ -16,35 +16,31 @@ ja:
         h_3: 高校3年生
         other: その他
 
-ja:
-  enums:
     request:
       academic_stage:
         primary: 小学生レベル
         middle: 中学生レベル
         high: 高校生レベル
-
-      subject:
-        japanese: 国語
-        math: 数学(算数)
-        social: 社会
-        sience: 理科
-        english: 英語
-
-      subject_content:
-        contemporary: 現代文
-        classic_literature: 古文
-        chinese_classics: 漢文
-        arithmetic: 算数
-        mathematics_1: 数学I
-        mathematics_a: 数学A
-        mathematics_2: 数学II
-        mathematics_b: 数学B
-        mathematics_3: 数学ΙII
-        mathematics_c: 数学C
-        japanese_history: 日本史
-        world_history: 世界史
-        geography: 地理
-        chemistry: 化学
-        physical: 物理
-        creature: 生物
+      # subject:
+      #   japanese: 国語
+      #   math: 数学(算数)
+      #   social: 社会
+      #   sience: 理科
+      #   english: 英語
+      # subject_content:
+      #   contemporary: 現代文
+      #   classic_literature: 古文
+      #   chinese_classics: 漢文
+      #   arithmetic: 算数
+      #   mathematics_1: 数学I
+      #   mathematics_a: 数学A
+      #   mathematics_2: 数学II
+      #   mathematics_b: 数学B
+      #   mathematics_3: 数学ΙII
+      #   mathematics_c: 数学C
+      #   japanese_history: 日本史
+      #   world_history: 世界史
+      #   geography: 地理
+      #   chemistry: 化学
+      #   physical: 物理
+      #   creature: 生物

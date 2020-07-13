@@ -1,4 +1,21 @@
-<%= form_for @request do |f| %>
+<%= form_for @video do |f| %>
+
+  <div class="field center">
+    <div class="video_content_box pa-20">
+      <% if @video.content.blank? %>
+        <%= image_tag "no_movie.png", :size => "700x500", id: "video_prev" %>
+      <% else %>
+        <%= video_tag @movie.content, :autoplay => true, id: "video_prev" %>
+      <% end %>
+    </div>
+    <span>※動画を保存してください</span><br>
+    <%= f.file_field :content, id: "input_video" %>
+  </div>
+
+  <div class="field pa-y-30">
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title, autofocus: true, autocomplete: "title", class:"form-control", placeholder: "【青チャート】p.5 大問1　微分について" %>
+  </div>
 
   <div class="field pa-y-30">
     <%= f.label :academic_stage, "対象レベル" %><br>
@@ -13,11 +30,6 @@
   <div class="form-group">
     <%= f.label :category, "分野" %><br>
     <%= f.collection_select :category_id, Category.all, :id, :subject_content, {prompt: "分野を選択してください"}, {class: "form-control"} %>
-  </div>
-
-  <div class="field pa-y-30">
-    <%= f.label :title, "タイトル" %>
-    <%= f.text_field :title, autofocus: true, autocomplete: "title", class:"form-control", placeholder: "【青チャート】p.5 大問1　微分について" %>
   </div>
 
   <div class="field pa-y-30">

@@ -11,6 +11,7 @@ class Student < ApplicationRecord
 
   has_many :requests, dependent: :destroy
   has_many :videos, dependent: :destroy
+  has_many :watches, dependent: :nullify
 
   validates :name, presence: true
   validates :grade, presence: true

@@ -3,6 +3,8 @@ class Video < ApplicationRecord
   belongs_to :request, optional: true
   belongs_to :category
 
+  has_many :watches, dependent: :destroy
+
   enum academic_stage:{
     primary: 0, middle: 1, high: 2
   }

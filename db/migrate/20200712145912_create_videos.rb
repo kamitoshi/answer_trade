@@ -8,7 +8,6 @@ class CreateVideos < ActiveRecord::Migration[5.2]
       t.string :title, null: false
       t.string :content
       t.text :detail
-      t.integer :count, default: 0
 
       t.timestamps
     end

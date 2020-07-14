@@ -8,8 +8,8 @@ class VideosController < ApplicationController
   end
 
   def show
-    unless @video.watched?
-      @video.watches.create(student_id: current_student.id)
+    unless current_student.watched?(@video)
+      current_student.watches.create(video_id: @video.id)
     end
   end
 

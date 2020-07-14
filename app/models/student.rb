@@ -11,7 +11,9 @@ class Student < ApplicationRecord
 
   has_many :requests, dependent: :destroy
   has_many :videos, dependent: :destroy
+
   has_many :watches, dependent: :nullify
+  has_many :watched_videos, through: :watches, source: "video"
 
   validates :name, presence: true
   validates :grade, presence: true
@@ -30,6 +32,10 @@ class Student < ApplicationRecord
     else
       self.image.info.to_s
     end
+  end
+
+  def watched?(video)
+    self.watches.find_by(video_id: video.id)
   end
 
 end

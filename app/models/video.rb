@@ -14,4 +14,8 @@ class Video < ApplicationRecord
   # validates :content, presence: true
   validates :detail, presence: true, length:{maximum:500}
 
+  def watched?
+    self.watches.find_by(student_id: current_student.id)
+  end
+
 end

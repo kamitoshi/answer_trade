@@ -8,6 +8,9 @@ class VideosController < ApplicationController
   end
 
   def show
+    unless @video.watched?
+      @video.watches.create(student_id: current_student.id)
+    end
   end
 
   def new

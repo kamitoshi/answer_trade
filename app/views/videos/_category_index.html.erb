@@ -1,0 +1,10 @@
+<div class="category-list-box pa-b-20">
+  <ul class="list-group list-group-flush">
+    <% @subject_categories.each do |subject_category| %>
+      <li class="list-group-item"><strong><%= subject_category %></strong></li>
+      <% @categories.where(subject: subject_category).each do |category| %>
+        <li class="list-group-item center"><span><%= category.subject_content %></span></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

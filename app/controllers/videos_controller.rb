@@ -3,6 +3,8 @@ class VideosController < ApplicationController
 
   def index
     @videos = Video.all
+    @categories = Category.all
+    @subject_categories = @categories.group(:subject).map{|subject_category| subject_category.subject}
   end
 
   def show
@@ -15,7 +17,7 @@ class VideosController < ApplicationController
   def create
     @video = current_student.videos.build(video_params)
     if @video.save
-      flash[:success] = "新しい動画を投稿しました"
+      flash[:success] = "動画を投稿しました"
       redirect_to videos_path
     else
       flash.now[:danger] = "動画の投稿に失敗しました"

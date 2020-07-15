@@ -1,42 +1,48 @@
 <% if evaluation.present? %>
   <% if evaluation.high? %>
+    <% high = video.evaluations.where(high_low: "high") %>
+    <% low = video.evaluations.where(high_low: "low") %>
     <div class="high dis-ib pa-10">
       <%= link_to video_evaluation_path(evaluation.video.id, evaluation.id), method: :delete, remote: true, class: "evaluation_destroy green" do %>
         <i class="fas fa-thumbs-up font-30"></i>
-        <span>123</span>
+        <span><%= high.count %></span>
       <% end %>
     </div>
     <div class="low dis-ib pa-10">
       <%= link_to video_evaluation_path(evaluation.video.id, evaluation.id), method: :patch, remote: true, class: "evaluation_update gray" do %>
         <i class="fas fa-thumbs-down font-30"></i>
-        <span>123</span>
+        <span><%= low.count %></span>
       <% end %>
     </div>
   <% elsif evaluation.low? %>
+    <% high = video.evaluations.where(high_low: "high") %>
+    <% low = video.evaluations.where(high_low: "low") %>
     <div class="high dis-ib pa-10">
       <%= link_to video_evaluation_path(evaluation.video.id, evaluation.id), method: :patch, remote: true, class: "evaluation_update gray" do %>
         <i class="fas fa-thumbs-up font-30"></i>
-        <span>123</span>
+        <span><%= high.count %></span>
       <% end %>
     </div>
     <div class="low dis-ib pa-10">
       <%= link_to video_evaluation_path(evaluation.video.id, evaluation.id), method: :delete, remote: true, class: "evaluation_destroy red" do %>
         <i class="fas fa-thumbs-down font-30"></i>
-        <span>123</span>
+        <span><%= low.count %></span>
       <% end %>
     </div>
   <% end %>
 <% else %>
+  <% high = video.evaluations.where(high_low: "high") %>
+  <% low = video.evaluations.where(high_low: "low") %>
   <div class="high dis-ib pa-10">
     <%= link_to video_evaluations_path(video_id: video.id, high_low: "high"), method: :post, remote: true, class: "valuation_create gray" do %>
       <i class="fas fa-thumbs-up font-30"></i>
-      <span>123</span>
+      <span><%= high.count %></span>
     <% end %>
   </div>
   <div class="low dis-ib pa-10">
     <%= link_to video_evaluations_path(video_id: video.id, high_low: "low"), method: :post, remote: true, class: "evaluation_create gray" do %>
       <i class="fas fa-thumbs-down font-30"></i>
-      <span>123</span>
+      <span><%= low.count %></span>
     <% end %>
   </div>
 <% end %>

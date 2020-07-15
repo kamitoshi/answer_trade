@@ -1,0 +1,77 @@
+<div class="container-fluid">
+  <div class="row ma-t-30">
+    <div class="col-8">
+      <div class="video_view-box">
+        <div class="content-box">
+          <div class="content">
+            <% @video.content %>
+          </div>
+          <div class="info">
+            <h4 class="pa-b-30"><%= @video.title %></h4>
+            <div class="dis-flex-box">
+              <div class="info-itme">
+                <p>視聴人数　<%= @video.watches.count %>人・投稿日　<%= @video.created_at.strftime("%Y/%m/%d") %></p>
+              </div>
+              <div class="info-item">
+                <div class="high dis-ib pa-10">
+                  <i class="fas fa-thumbs-up font-30"></i>
+                  <span>123</span>
+                </div>
+                <div class="low dis-ib pa-10">
+                  <i class="fas fa-thumbs-down font-30"></i>
+                  <span>123</span>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="video_student-info">
+              <div class="dis-flex-box pa-b-30">
+                <div class="student">
+                  <div class="thumnail-image dis-ib">
+                    <%= image_tag @video.student.thumnail_image, size:"50x50", class:"circle" %>
+                  </div>
+                  <div class="name-box dis-ib pa-10">
+                    <%= link_to @video.student.name, student_path(@video.student) %>
+                    <span>フォロワー数　〇人</span>
+                  </div> 
+                </div>
+                <div class="follow">
+                  <button class="btn btn-success pa-10">フォローする</button>
+                </div>
+              </div>
+              <div class="video_ditail pa-30">
+                <p><%= @video.detail %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="video_side-box">
+        <div class="side-item row pa-b-20">
+          <div class="side-content col-5">
+          
+          </div>
+          <div class="side-info col-7">
+            <h6 class="pa-b-20">【黄チャート】p.5　大問３</h6>
+            <p>テスト太郎さん</p>
+            <p>視聴回数　123回</p>
+          </div>
+        </div>
+
+        <div class="side-item row">
+          <div class="side-content col-5">
+          
+          </div>
+          <div class="side-info col-7">
+            <h6 class="pa-b-20">【黄チャート】p.5　大問３</h6>
+            <p>テスト太郎さん</p>
+            <p>視聴回数　123回</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

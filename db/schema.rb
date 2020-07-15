@@ -10,18 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_070817) do
+ActiveRecord::Schema.define(version: 2020_07_14_135127) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "subject"
+    t.string "subject_content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "requests", force: :cascade do |t|
     t.integer "student_id"
+    t.integer "category_id"
     t.integer "academic_stage", null: false
-    t.integer "subject", null: false
-    t.integer "subject_content", null: false
     t.string "title", null: false
     t.text "detail"
     t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_requests_on_category_id"
     t.index ["student_id"], name: "index_requests_on_student_id"
   end
 
@@ -48,6 +55,33 @@ ActiveRecord::Schema.define(version: 2020_07_11_070817) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "request_id"
+    t.integer "category_id"
+    t.integer "academic_stage", null: false
+    t.string "title", null: false
+    t.string "content"
+    t.text "detail"
+    t.integer "count", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_videos_on_category_id"
+    t.index ["request_id"], name: "index_videos_on_request_id"
+    t.index ["student_id"], name: "index_videos_on_student_id"
+    t.index ["title"], name: "index_videos_on_title"
+  end
+
+  create_table "watches", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id", "video_id"], name: "index_watches_on_student_id_and_video_id", unique: true
+    t.index ["student_id"], name: "index_watches_on_student_id"
+    t.index ["video_id"], name: "index_watches_on_video_id"
   end
 
 end

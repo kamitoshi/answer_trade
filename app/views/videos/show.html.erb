@@ -48,7 +48,19 @@
           </div>
         </div>
       </div>
-    </div>
+      
+      <div class="video_comment-box">
+        <h5 class="title">コメント</h5>
+        <hr>
+        <div class="comment-form right">
+          <%= render "comments/form", {comment: @comment, video: @video} %>
+        </div>
+        <div class="index-box" id="comments_area">
+          <%= render "comments/index", comments: @comments %>
+        </div>
+      </div>
+
+    </div><!-- col-8 -->
     <div class="col-4">
       <div class="video_side-box">
         <% if @videos.any? %>

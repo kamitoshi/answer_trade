@@ -12,8 +12,15 @@ class Student < ApplicationRecord
   has_many :requests, dependent: :destroy
   has_many :videos, dependent: :destroy
 
+  # watchリレーション
   has_many :watches, dependent: :nullify
   has_many :watched_videos, through: :watches, source: "video"
+
+  # followリレーション
+  has_many :follows, dependent: :destroy
+  has_many :follow_students, through: :follows, source: :follow
+  has_many :followed, class_name: "Follow", foreign_key: "follow_id"
+  has_many :followed_students, through: :followed, source: :student
 
   validates :name, presence: true
   validates :grade, presence: true
@@ -36,6 +43,24 @@ class Student < ApplicationRecord
 
   def watched?(video)
     self.watches.find_by(video_id: video.id)
+  end
+
+  # 引数で渡された生徒をフォローする
+  def follow(student)
+    unless self == student
+      self.follows.find_or_create_by(follow_id: student.id)
+    end
+  end
+
+  # 引数で渡された生徒のフォローを解除する
+  def unfollow(student)
+    follow = self.follows.find_by(follow_id: student.id)
+    follow.destroy if follow
+  end
+
+  # 引数で渡された生徒をフォローしているかを判別する
+  def follow?(student)
+    self.follow_students.include?(student)
   end
 
 end

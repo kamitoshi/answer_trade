@@ -75,7 +75,6 @@ ActiveRecord::Schema.define(version: 2020_07_15_022805) do
     t.string "title", null: false
     t.string "content"
     t.text "detail"
-    t.integer "count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_videos_on_category_id"

@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'videos/index'
-  get 'videos/show'
-  get 'videos/new'
-  get 'videos/edit'
   root 'home#top'
   get 'home/about'
   devise_for :students, controllers:{
@@ -11,6 +7,7 @@ Rails.application.routes.draw do
     registrations: "students/registrations"
   }
   resources :students, only:[:index, :show, :edit, :update, :destroy]
+  resources :follows, only:[:create, :destroy]
   resources :requests do
     get "videos/request_new"
     post "videos/request_create"

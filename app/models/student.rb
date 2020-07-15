@@ -18,7 +18,7 @@ class Student < ApplicationRecord
 
   # followリレーション
   has_many :follows, dependent: :destroy
-  has_many :follow_students, through: :follows, source: :follow
+  has_many :follow_students, through: :follows, source: "follow"
   has_many :followed, class_name: "Follow", foreign_key: "follow_id"
   has_many :followed_students, through: :followed, source: :student
 

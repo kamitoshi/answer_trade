@@ -31,13 +31,15 @@
                     <%= image_tag @video.student.thumnail_image, size:"50x50", class:"circle" %>
                   </div>
                   <div class="name-box dis-ib pa-10">
-                    <%= link_to @video.student.name, student_path(@video.student) %>
+                    <%= link_to @student.name, student_path(@student) %>
                     <span>フォロワー数　〇人</span>
                   </div> 
                 </div>
-                <div class="follow">
-                  <button class="btn btn-success pa-10">フォローする</button>
-                </div>
+                <% unless current_student == @student %>
+                  <div class="follow" id="follow_toggle">
+                    <%= render "follows/follow_btn", student: @student %>
+                  </div>
+                <% end %>
               </div>
               <div class="video_ditail pa-30">
                 <p><%= @video.detail %></p>
@@ -49,28 +51,22 @@
     </div>
     <div class="col-4">
       <div class="video_side-box">
-        <div class="side-item row pa-b-20">
-          <div class="side-content col-5">
-          
-          </div>
-          <div class="side-info col-7">
-            <h6 class="pa-b-20">【黄チャート】p.5　大問３</h6>
-            <p>テスト太郎さん</p>
-            <p>視聴回数　123回</p>
-          </div>
-        </div>
-
-        <div class="side-item row">
-          <div class="side-content col-5">
-          
-          </div>
-          <div class="side-info col-7">
-            <h6 class="pa-b-20">【黄チャート】p.5　大問３</h6>
-            <p>テスト太郎さん</p>
-            <p>視聴回数　123回</p>
-          </div>
-        </div>
-
+        <% if @videos.any? %>
+          <% @videos.each do |video| %>
+            <div class="side-item row pa-b-20">
+              <div class="side-content col-5">
+              
+              </div>
+              <div class="side-info col-7">
+                <h6 class="pa-b-20"><%= video.title %></h6>
+                <p><%= video.student.name %></p>
+                <p>視聴人数　<%= video.watches.count %>人</p>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <p class="center">他の動画がありません</p>
+        <% end %>
       </div>
     </div>
   </div>

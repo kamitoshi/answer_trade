@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_14_135127) do
+ActiveRecord::Schema.define(version: 2020_07_15_022805) do
 
   create_table "categories", force: :cascade do |t|
     t.string "subject"
     t.string "subject_content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "follow_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follow_id"], name: "index_follows_on_follow_id"
+    t.index ["student_id", "follow_id"], name: "index_follows_on_student_id_and_follow_id", unique: true
+    t.index ["student_id"], name: "index_follows_on_student_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -65,7 +75,6 @@ ActiveRecord::Schema.define(version: 2020_07_14_135127) do
     t.string "title", null: false
     t.string "content"
     t.text "detail"
-    t.integer "count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_videos_on_category_id"

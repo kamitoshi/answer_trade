@@ -11,6 +11,8 @@ class VideosController < ApplicationController
     unless current_student.watched?(@video)
       current_student.watches.create(video_id: @video.id)
     end
+    @student = @video.student
+    @videos = Video.all
   end
 
   def new

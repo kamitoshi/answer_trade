@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-2">
       <div class="video_side-box">
@@ -16,7 +16,7 @@
               <h6 class="info-title pa-y-10"><%= video.title %></h6>
               <div class="info-detail pa-10">
                 <p><%= video.student.name %></p>
-                <p>視聴回数　<%= video.count %>回</p>
+                <p>視聴回数　<%= video.watches.count %>回</p>
                 <p>投稿日　<%= video.created_at.strftime("%Y/%m/%d") %></p>
                 <%= link_to " ", video_path(video) %>
               </div>

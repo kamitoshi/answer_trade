@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student: one
+  video: one
+  high_low: 1
+
+two:
+  student: two
+  video: two
+  high_low: 1

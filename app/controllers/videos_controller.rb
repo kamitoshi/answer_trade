@@ -15,6 +15,7 @@ class VideosController < ApplicationController
     @videos = Video.all
     @comment = Comment.new
     @comments = Comment.where(video_id: @video.id).order(created_at: :desc)
+    @evaluation = Evaluation.find_by(student_id: current_student.id, video_id: @video.id)
   end
 
   def new

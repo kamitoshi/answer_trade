@@ -44,6 +44,9 @@
     }
     .info-item {
       color: #aaa;
+      .link {
+        text-decoration: none;
+      }
     }
   }
 }

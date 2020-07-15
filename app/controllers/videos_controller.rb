@@ -13,6 +13,8 @@ class VideosController < ApplicationController
     end
     @student = @video.student
     @videos = Video.all
+    @comment = Comment.new
+    @comments = Comment.where(video_id: @video.id).order(created_at: :desc)
   end
 
   def new

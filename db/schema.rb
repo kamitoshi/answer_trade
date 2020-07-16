@@ -30,12 +30,13 @@ ActiveRecord::Schema.define(version: 2020_07_16_035255) do
   end
 
   create_table "communities", force: :cascade do |t|
+    t.integer "admin_id"
     t.string "name", null: false
     t.string "slogan"
     t.text "detail"
-    t.integer "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_communities_on_admin_id"
     t.index ["name"], name: "index_communities_on_name", unique: true
   end
 

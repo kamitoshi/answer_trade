@@ -14,6 +14,7 @@ class CommunitiesController < ApplicationController
 
   def create
     @community =  current_student.communities.build(community_params)
+    @community.admin_id = current_student.id
     if @community.save
       flash[:success] = "『#{@community.name}』を作成しました"
       redirect_to community_path(@community)

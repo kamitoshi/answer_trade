@@ -9,38 +9,46 @@
       <h5>新着動画</h5>
       <hr>
       <div class="video_index-box">
-        <% @videos.each do |video| %>
-          <div class="video_index-item">
-            <div class="thumnail-image"></div>
-            <div class="info">
-              <h6 class="info-title pa-y-10"><%= video.title %></h6>
-              <div class="info-detail pa-10">
-                <p><%= video.student.name %></p>
-                <p>視聴回数　<%= video.watches.count %>回</p>
-                <p>投稿日　<%= video.created_at.strftime("%Y/%m/%d") %></p>
-                <%= link_to " ", video_path(video) %>
+        <% if @videos.any? %>
+          <% @videos.each do |video| %>
+            <div class="video_index-item">
+              <div class="thumnail-image"></div>
+              <div class="info">
+                <h6 class="info-title pa-y-10"><%= video.title %></h6>
+                <div class="info-detail pa-10">
+                  <p><%= video.student.name %></p>
+                  <p>視聴人数　<%= video.watches.count %>人</p>
+                  <p>投稿日　<%= video.created_at.strftime("%Y/%m/%d") %></p>
+                  <%= link_to " ", video_path(video) %>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
+        <% else %>
+          <p class="center">新着動画はありません</p>
         <% end %>
       </div>
       
       <h5>動画一覧</h5>
       <hr>
       <div class="video_index-box">
-        <% @videos.each do |video| %>
-          <div class="video_index-item">
-            <div class="thumnail-image"></div>
-            <div class="info">
-              <h6 class="info-title pa-y-10"><%= video.title %></h6>
-              <div class="info-detail pa-10">
-                <p><%= video.student.name %></p>
-                <p>視聴回数　<%= video.watches.count %>回</p>
-                <p>投稿日　<%= video.created_at.strftime("%Y/%m/%d") %></p>
-                <%= link_to " ", video_path(video) %>
+        <% if @videos.any? %>
+          <% @videos.each do |video| %>
+            <div class="video_index-item">
+              <div class="thumnail-image"></div>
+              <div class="info">
+                <h6 class="info-title pa-y-10"><%= video.title %></h6>
+                <div class="info-detail pa-10">
+                  <p><%= video.student.name %></p>
+                  <p>視聴人数　<%= video.watches.count %>人</p>
+                  <p>投稿日　<%= video.created_at.strftime("%Y/%m/%d") %></p>
+                  <%= link_to " ", video_path(video) %>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
+        <% else %>
+          <p class="center">動画はありません</p>
         <% end %>
       </div>
     </div>

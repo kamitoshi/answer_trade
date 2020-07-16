@@ -24,6 +24,13 @@ class Student < ApplicationRecord
   has_many :followed, class_name: "Follow", foreign_key: "follow_id"
   has_many :followed_students, through: :followed, source: :student
 
+  # communityリレーション
+  has_many :student_communities, dependent: :destroy
+  has_many :communities, through: :student_communities, source: "community"
+
+  # adminになったコミュニティ
+  has_many :communities, dependent: :nullify, foreign_key: "admin_id"
+
   validates :name, presence: true
   validates :grade, presence: true
 

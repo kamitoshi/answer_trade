@@ -10,16 +10,27 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">ホーム <span class="sr-only">(現位置)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">リンク</a>
+        <li class="nav-item active">
+          <%= link_to "登録生徒一覧", students_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            コミュニティ関連
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to "コミュニティ一覧", communities_path, class: "dropdown-item" %>
+            <%= link_to "コミュニティ作成", new_community_path, class: "dropdown-item" %>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">その他</a>
+          </div>
         </li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             動画関連
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">新規動画掲載</a>
-            <a class="dropdown-item" href="#">動画一覧</a>
+            <%= link_to "動画一覧", videos_path, class: "dropdown-item" %>
+            <%= link_to "動画新規投稿", new_video_path, class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">その他</a>
           </div>

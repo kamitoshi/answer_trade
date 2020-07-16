@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row ma-t-30">
     <div class="col-8">
-      <div class="video_view-box">
+      <div class="video_title-box">
         <h4 class="pa-b-20"><%= @video.title %></h4>
         <div class="dis-flex-box">
           <div class="info-itme">
@@ -15,6 +15,12 @@
           </div>
         </div>
         <hr>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <div class="video_view-box">
         <div class="content-box">
           <div class="content">
             <% @video.content %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_15_105234) do
+ActiveRecord::Schema.define(version: 2020_07_16_035255) do
 
   create_table "categories", force: :cascade do |t|
     t.string "subject"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 2020_07_15_105234) do
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_comments_on_student_id"
     t.index ["video_id"], name: "index_comments_on_video_id"
+  end
+
+  create_table "communities", force: :cascade do |t|
+    t.integer "admin_id"
+    t.string "name", null: false
+    t.string "slogan"
+    t.text "detail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_communities_on_admin_id"
+    t.index ["name"], name: "index_communities_on_name", unique: true
   end
 
   create_table "evaluations", force: :cascade do |t|
@@ -61,6 +72,16 @@ ActiveRecord::Schema.define(version: 2020_07_15_105234) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_requests_on_category_id"
     t.index ["student_id"], name: "index_requests_on_student_id"
+  end
+
+  create_table "student_communities", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "community_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["community_id"], name: "index_student_communities_on_community_id"
+    t.index ["student_id", "community_id"], name: "index_student_communities_on_student_id_and_community_id", unique: true
+    t.index ["student_id"], name: "index_student_communities_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|

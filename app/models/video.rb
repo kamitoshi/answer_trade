@@ -5,6 +5,7 @@ class Video < ApplicationRecord
 
   has_many :watches, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :evaluations, dependent: :destroy
 
   enum academic_stage:{
     primary: 0, middle: 1, high: 2

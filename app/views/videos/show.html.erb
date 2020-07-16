@@ -2,28 +2,24 @@
   <div class="row ma-t-30">
     <div class="col-8">
       <div class="video_view-box">
+        <h4 class="pa-b-20"><%= @video.title %></h4>
+        <div class="dis-flex-box">
+          <div class="info-itme">
+            <p>
+              <span class="gray">投稿日　<%= @video.created_at.strftime("%Y/%m/%d") %></span><br>
+              <span class="gray">視聴人数　<%= @video.watches.count %>人</span>
+            </p>
+          </div>
+          <div class="info-item" id="evaluation_toggle">
+            <%= render partial: "evaluations/evaluation_btn", locals: {evaluation: @evaluation, video: @video} %>
+          </div>
+        </div>
+        <hr>
         <div class="content-box">
           <div class="content">
             <% @video.content %>
           </div>
           <div class="info">
-            <h4 class="pa-b-30"><%= @video.title %></h4>
-            <div class="dis-flex-box">
-              <div class="info-itme">
-                <p>視聴人数　<%= @video.watches.count %>人・投稿日　<%= @video.created_at.strftime("%Y/%m/%d") %></p>
-              </div>
-              <div class="info-item">
-                <div class="high dis-ib pa-10">
-                  <i class="fas fa-thumbs-up font-30"></i>
-                  <span>123</span>
-                </div>
-                <div class="low dis-ib pa-10">
-                  <i class="fas fa-thumbs-down font-30"></i>
-                  <span>123</span>
-                </div>
-              </div>
-            </div>
-            <hr>
             <div class="video_student-info">
               <div class="dis-flex-box pa-b-30">
                 <div class="student">
@@ -32,7 +28,7 @@
                   </div>
                   <div class="name-box dis-ib pa-10">
                     <%= link_to @student.name, student_path(@student) %>
-                    <span>フォロワー数　〇人</span>
+                    <span class="pa-l-30">フォロワー数　<%= @student.followed_students.count %>人</span>
                   </div> 
                 </div>
                 <% unless current_student == @student %>

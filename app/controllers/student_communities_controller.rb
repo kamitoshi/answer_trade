@@ -1,2 +1,0 @@
-class StudentCommunitiesController < ApplicationController
-end

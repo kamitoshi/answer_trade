@@ -1,5 +1,5 @@
 class CommunitiesController < ApplicationController
-  before_action :set_community, only:[:show, :edit, :update, :destroy]
+  before_action :set_community, only:[:show, :edit, :update, :destroy, :add, :out]
 
   def index
     @communities = Community.all
@@ -58,6 +58,28 @@ class CommunitiesController < ApplicationController
     else
       flash[:danger] = "管理者以外はコミュニティを削除することができません"
       redirect_to comminity_path(@community)
+    end
+  end
+
+  def add
+    add = current_student.student_communities.build(community_id: @community.id)
+    if add.save
+      flash[:success] = "『#{@community.name}』に参加しました"
+      redirect_to community_path(@community)
+    else
+      flash[:danger] = "『#{@community.name}』に参加できませんでした"
+      redirect_to community_path(@community)
+    end
+  end
+
+  def out
+    out = StudentCommunity.find_by(student_id: current_student.id, community_id: @community.id)
+    if out.destroy
+      flash[:success] = "『#{@community.name}』を脱退しました"
+      redirect_to community_path(@community)
+    else
+      flash[:danger] = "『#{@community.name}』を脱退できませんでした"
+      redirect_to community_path(@community)
     end
   end
 

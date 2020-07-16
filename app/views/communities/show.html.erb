@@ -35,10 +35,13 @@
         </div>
       </div>
       <div class="add-link pa-y-50 wid-80 ma-a">
-        <% unless @community.joined?(current_student) %>
-          <%= link_to "コミュニティに参加する", "#", class:"btn btn-info wid-100" %>
+        <% if @community.joined?(current_student) %>
+          <%= link_to "コミュニティを脱退する", out_community_path(@community), method: :delete, class:"btn btn-danger wid-100" %>
+        <% else %>
+          <%= link_to "コミュニティに参加する", add_community_path(@community), method: :post, class:"btn btn-info wid-100" %>
         <% end %>
       </div>
+      <hr>
       <% if @community.joined?(current_student) %>
         
       <% end %>

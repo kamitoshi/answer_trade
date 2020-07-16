@@ -1,4 +1,4 @@
 class StudentCommunity < ApplicationRecord
-  belongs_to :student
-  belongs_to :community
+  belongs_to :student, optional: true
+  belongs_to :community, optional: true
 end

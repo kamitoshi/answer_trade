@@ -13,9 +13,9 @@ class CommunitiesController < ApplicationController
   end
 
   def create
-    @community =  current_student.communities.build(community_params)
-    @community.admin_id = current_student.id
+    @community = current_student.communities.build(community_params)
     if @community.save
+      StudentCommunity.create(student_id: current_student.id, community_id: @community.id)
       flash[:success] = "『#{@community.name}』を作成しました"
       redirect_to community_path(@community)
     else
@@ -47,7 +47,7 @@ class CommunitiesController < ApplicationController
   end
 
   def destroy
-    if @community.students.include(current_student) && @community.admin_id == current_student.id
+    if @community.admin == current_student
       if @community.destroy
         flash[:success] = "『#{@community.name}』を削除しました"
         redirect_to communities_path
@@ -63,7 +63,7 @@ class CommunitiesController < ApplicationController
 
   private
   def community_params
-    params.require(:community).permit(:name, :slogan, :detail, :admin_id)
+    params.require(:community).permit(:admin_id, :name, :slogan, :detail)
   end
 
   def set_community

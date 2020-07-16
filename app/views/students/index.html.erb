@@ -1,9 +1,9 @@
- <div class="container">
+<div class="container">
   <div class="row">
     <div class="col-12">
       <div class="student_index-box">
         <h3 class="title">登録生徒一覧</h3>
-        <table class="table center">
+        <table class="table table-hover center">
           <% if @students.any? %>
             <thead>
               <tr class="active">
@@ -20,11 +20,11 @@
             </thead>
             <% @students.each do |student| %>
               <tbody>
-                <tr>
+                <tr class="pointer" data-href="<%= student_path(student) %>">
                   <td class="right">
                     <%= image_tag student.thumnail_image, class:"circle", size: "50x50" %>
                   </td>
-                  <td><%= link_to student.name, student_path(student) %></td>
+                  <td><%= student.name %></td>
                   <td><%= student.grade_i18n %></td>
                   <td></td>
                   <td>1</td>
@@ -42,5 +42,5 @@
       </div>
     </div>
   </div>
- </div> 
+</div> 
     

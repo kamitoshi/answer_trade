@@ -1,0 +1,23 @@
+<%= form_for @community do |f| %>
+
+  <div class="field pa-y-30">
+    <%= f.label :name, "コミュニティ名" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control", placeholder: "目指せ！早稲田大学コミュニティ" %>
+  </div>
+
+  <div class="field pa-y-30">
+    <%= f.label :slogan, "スローガン（任意）" %>
+    <%= f.text_field :slogan, autofocus: true, autocomplete: "slogan", class:"form-control", placeholder: "みんなで一緒に早稲田大学を目指しましょう！" %>
+  </div>
+
+  <div class="field pa-y-30">
+    <%= f.label :detail, "活動内容（任意）" %>
+    <% text = "このコミュニティは主に情報の共有をメインに活動しています。志望校選択など幅広く情報共有できたらいいですね！" %>
+    <%= f.text_area :detail, autofocus: true, autocomplete: "detail", class:"form-control", style:"height:300px", placeholder: text %>
+  </div>
+
+  <div class="actions right">
+    <%= f.submit btn, class:"btn btn-primary" %>
+  </div>
+
+<% end %>

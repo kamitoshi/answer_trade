@@ -1,8 +1,9 @@
 class Community < ApplicationRecord
-  belongs_to :admin, class_name: "Student"
   # studentリレーション
   has_many :student_communities, dependent: :destroy
-  has_many :student, through: :student_communities, source: "student"
+  has_many :students, through: :student_communities, source: "student"
+
+  belongs_to :admin, class_name: "Student"
 
   validates :name, presence: true
 end

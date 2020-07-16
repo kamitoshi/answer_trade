@@ -1,2 +1,47 @@
-<h1>Communities#show</h1>
-<p>Find me in app/views/communities/show.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-8">
+      <div class="community_name-box">
+        <h2>『<%= @community.name %>』</h2>
+        <h5>〜<%= @community.slogan %>〜</h5>
+      </div>
+    </div>
+    <div class="col-4 ma-t-50">
+      <div class="community_info-box wid-70 ma-l">
+        <h6 class="gray">コミュニティ創設日　<%= @community.created_at.strftime("%Y/%m/%d") %></h6>
+        <h6 class="gray">コミュニティ管理者　<%= @community.admin.name %></h6>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-3">
+      <div class="community_student-box">
+        <div class="student_list-box pa-b-20">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>コミュニティ参加者</strong></li>
+            <% @community.students.each do |student| %>
+              <li class="list-group-item"><%= student.name %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="community_main-box">
+        <div class="detail">
+          <h5 class="sub_title">コミュニティ概要</h5>
+          <p><%= @community.detail %></p>
+        </div>
+      </div>
+      <div class="add-link pa-y-50 wid-80 ma-a">
+        <% unless @community.joined?(current_student) %>
+          <%= link_to "コミュニティに参加する", "#", class:"btn btn-info wid-100" %>
+        <% end %>
+      </div>
+      <% if @community.joined?(current_student) %>
+        
+      <% end %>
+    </div>
+  </div>
+</div>

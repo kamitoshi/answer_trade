@@ -1,0 +1,2 @@
+class StudentCommunitiesController < ApplicationController
+end

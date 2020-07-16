@@ -25,14 +25,14 @@ class CommunitiesController < ApplicationController
   end
 
   def edit
-    unless @community.students.include(current_student)
+    unless @community.students.include?(current_student)
       flash[:danger] = "所属していないコミュニティの編集はできません"
       redirect_to comminity_path(@community)
     end
   end
 
   def update
-    if @community.students.include(current_student)
+    if @community.students.include?(current_student)
       if @community.update(community_params)
         flash[:success] = "編集しました"
         redirect_to community_path(@community)

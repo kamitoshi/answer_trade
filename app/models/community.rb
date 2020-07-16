@@ -6,4 +6,9 @@ class Community < ApplicationRecord
   belongs_to :admin, class_name: "Student"
 
   validates :name, presence: true
+
+  # 引数で渡された生徒がコミュニティに属しているか判別する
+  def joined?(student)
+    self.students.include?(student)
+  end
 end

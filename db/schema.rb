@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_15_105234) do
+ActiveRecord::Schema.define(version: 2020_07_16_031816) do
 
   create_table "categories", force: :cascade do |t|
     t.string "subject"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 2020_07_15_105234) do
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_comments_on_student_id"
     t.index ["video_id"], name: "index_comments_on_video_id"
+  end
+
+  create_table "communities", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slogan"
+    t.text "detail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_communities_on_name"
   end
 
   create_table "evaluations", force: :cascade do |t|

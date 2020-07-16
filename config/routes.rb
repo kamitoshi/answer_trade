@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :comments, only:[:create, :destroy]
     resources :evaluations, only:[:create, :update, :destroy]
   end
+  resources :communities
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

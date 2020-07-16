@@ -6,5 +6,6 @@ class CreateStudentCommunities < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :student_communities, [:student_id, :community_id], unique: true
   end
 end

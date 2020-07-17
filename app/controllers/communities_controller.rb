@@ -6,6 +6,7 @@ class CommunitiesController < ApplicationController
   end
 
   def show
+    @tweets = Tweet.where(community_id: @community.id)
   end
 
   def new

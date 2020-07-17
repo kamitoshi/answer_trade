@@ -6,7 +6,7 @@ class CommunitiesController < ApplicationController
   end
 
   def show
-    @tweets = Tweet.where(community_id: @community.id)
+    @tweets = Tweet.where(community_id: @community.id).order(created_at: :desc)
   end
 
   def new

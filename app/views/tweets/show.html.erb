@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 pa-30">
+      <div class="tweet_detail-box">
+        <div class="student">
+          <div class="thumnail-image dis-ib">
+            <%= image_tag @tweet.student.thumnail_image, size:"50x50", class:"circle" %>
+          </div>
+          <div class="name-box dis-ib pa-10">
+            <%= link_to @tweet.student.name, student_path(@tweet.student) %>
+          </div>
+        </div>
+        <div class="info right">
+          <h6 class="gray"><%= @tweet.created_at.strftime("%Y/%m/%d %H:%M:%S") %></h6>
+        </div>
+      </div>
+      <div class="detail pa-30">
+        <p><%= @tweet.detail %></p>
+      </div>
+      <div class="reply-link right">
+        <%= link_to "返信する", new_tweet_reply_tweet_path(@tweet), class:"btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="low">
+    <div class="col-12">
+      <h5 class="title">返信一覧</h5>
+      <div class="reply_tweet_index-box pa-x-50">
+        <%= render "reply_tweets/index", reply_tweets: @reply_tweets %>
+      </div>
+    </div>
+  </div>
+</div>

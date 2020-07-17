@@ -1,0 +1,22 @@
+<% if reply_tweets.any? %>
+  <% reply_tweets.each do |reply| %>  
+    <div class="reply-box ma-l-30 ma-r-30 ma-y-10">
+      <div class="reply-info">
+        <span class="reply-student"><%= link_to "@#{reply.student.name}", student_path(reply.student) %></span>    
+        <span class="reply-date pa-l-20 gray"><%= reply.created_at.strftime('%Y/%m/%d %H:%M:%S') %></span>
+      </div>
+      <div class="reply-detail" id="reply">
+        <p class="pa-20"><%= reply.detail %></p>
+      </div>
+      <div class="reply-menu">
+        <% if reply.student == current_student %>
+          <div class="menu-item right">
+            <%= link_to "削除する", tweet_reply_tweet_path(reply.tweet_id, reply.id), method: :delete, remote: true, class: "reply_destroy gray" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p class="center">返信がありません</p>
+<% end %>

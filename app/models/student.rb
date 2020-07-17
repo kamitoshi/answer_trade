@@ -10,10 +10,11 @@ class Student < ApplicationRecord
   }
 
   has_many :requests, dependent: :destroy
-  has_many :videos, dependent: :destroy
+  has_many :videos, dependent: :nullify
   has_many :comments, dependent: :nullify
   has_many :evaluations, dependent: :nullify
   has_many :tweets, dependent: :nullify
+  has_many :reply_tweets, dependent: :nullify
 
   # watchリレーション
   has_many :watches, dependent: :nullify

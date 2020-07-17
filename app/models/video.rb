@@ -1,5 +1,5 @@
 class Video < ApplicationRecord
-  belongs_to :student
+  belongs_to :student, optional: true
   belongs_to :request, optional: true
   belongs_to :category
 

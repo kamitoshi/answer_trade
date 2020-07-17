@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_17_031837) do
+ActiveRecord::Schema.define(version: 2020_07_17_092931) do
 
   create_table "categories", force: :cascade do |t|
     t.string "subject"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 2020_07_17_031837) do
     t.index ["follow_id"], name: "index_follows_on_follow_id"
     t.index ["student_id", "follow_id"], name: "index_follows_on_student_id_and_follow_id", unique: true
     t.index ["student_id"], name: "index_follows_on_student_id"
+  end
+
+  create_table "reply_tweets", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "tweet_id"
+    t.text "detail", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_reply_tweets_on_student_id"
+    t.index ["tweet_id"], name: "index_reply_tweets_on_tweet_id"
   end
 
   create_table "requests", force: :cascade do |t|

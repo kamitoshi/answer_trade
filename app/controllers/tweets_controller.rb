@@ -2,7 +2,7 @@ class TweetsController < ApplicationController
 
   def show
     @tweet = Tweet.find(params[:id])
-    @reply_tweets = @tweet.reply_tweets.all.order(created_ad: :desc)
+    @reply_tweets = @tweet.reply_tweets.all.order(created_at: :desc)
   end
 
   def new

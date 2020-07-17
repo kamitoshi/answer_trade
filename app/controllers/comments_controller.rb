@@ -1,5 +1,10 @@
 class CommentsController < ApplicationController
 
+  def show
+    @comment = Comment.find(params[:id])
+    @reply_comments = @comment.reply_comments.all.order(created_at: :desc)
+  end
+
   def create
     @video = Video.find(params[:video_id])
     @comment = @video.comments.build(comment_params)

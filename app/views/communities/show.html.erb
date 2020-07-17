@@ -19,7 +19,7 @@
       <div class="community_student-box">
         <div class="student_list-box pa-b-20">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><strong>コミュニティ参加者</strong></li>
+            <li class="list-group-item"><strong>コミュニティ参加者</strong><span>（<%= @community.students.count %>）</span></li>
             <% @community.students.each do |student| %>
               <li class="list-group-item"><%= student.name %></li>
             <% end %>

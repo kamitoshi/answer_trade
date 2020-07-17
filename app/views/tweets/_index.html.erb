@@ -1,6 +1,6 @@
 <% if tweets.any? %>
   <% tweets.each do |tweet| %>  
-    <div class="tweet-box ma-l-30 ma-r-30 ma-y-10">
+    <div class="tweet-box ma-l-50 pa-y-20">
       <div class="tweet-info">
         <span class="tweet-student"><%= link_to "@#{tweet.student.name}", student_path(tweet.student) %></span>    
         <span class="tweet-date pa-l-20 gray"><%= tweet.created_at.strftime('%Y/%m/%d %H:%M:%S') %></span>
@@ -29,6 +29,15 @@
           </div>
         <% end %>
       </div>
+      <% if tweet.reply_tweets.any? %>
+        <h5>返信一覧</h5>
+        <%= render partial: "tweets/reply_index", locals: {reply_tweets: tweet.reply_tweets, tweet: tweet} %>
+        <% if tweet.reply_tweets.count > 10 %>
+          <div class="index-link">
+            <%= link_to "さらに返信を見る", tweet_path(tweet) %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   <% end %>
 <% else %>

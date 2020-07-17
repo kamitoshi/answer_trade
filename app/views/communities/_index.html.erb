@@ -1,6 +1,6 @@
 <% if tweets.any? %>
   <% tweets.each do |tweet| %>  
-    <div class="tweet-box ma-l-30 ma-r-30 ma-y-10">
+    <div class="tweet-box ma-l-50 pa-y-20">
       <div class="tweet-info">
         <span class="tweet-student"><%= link_to "@#{tweet.student.name}", student_path(tweet.student) %></span>    
         <span class="tweet-date pa-l-20 gray"><%= tweet.created_at.strftime('%Y/%m/%d %H:%M:%S') %></span>
@@ -24,7 +24,7 @@
               <span>123</span>
             </div>
             <div class="response dis-ib pa-10">
-              <%= link_to "返信", "#", class:"gray" %>
+              <%= link_to "返信", new_tweet_reply_tweet_path(tweet), class:"gray" %>
             </div>
           </div>
         <% end %>

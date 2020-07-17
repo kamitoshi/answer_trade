@@ -24,7 +24,7 @@
               <span>123</span>
             </div>
             <div class="response dis-ib pa-10">
-              <%= link_to "返信", "#", class:"gray" %>
+              <%= link_to "返信", new_comment_reply_comment_path(comment), class:"gray" %>
             </div>
           </div>
         <% end %>
@@ -35,26 +35,38 @@
     <% comments[5..-1].each do |comment| %>  
       <div class="collapse" id="collapseCommentIndex">
         <div class="comment-box ma-l-30 ma-r-30 ma-y-10">
-          <div class="comment-box-detail" id="comment">
-            <p style="word-wrap: break-word"><%= comment.detail %></p>
+          <div class="comment-info">
+            <span class="comment-student"><%= link_to "@#{comment.student.name}", student_path(comment.student) %></span>    
+            <span class="comment-date pa-l-20 gray"><%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %></span>
           </div>
-          <div class="comment-box-info right">
-            <span><%= link_to "@#{comment.student.name}", student_path(comment.student) %></span><br>   
-            <span class="comment-date pull-right">
-              <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-            </span><br>
-            <span>
-              <% if comment.student == current_student %>
-                <%= link_to video_comment_path(comment.video_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
-                  <i class="fas fa-trash" style="color: gray;"></i>
-                <% end %>
-              <% end %>
-            </span>
+          <div class="comment-detail" id="comment">
+            <p class="pa-20"><%= comment.detail %></p>
+          </div>
+          <div class="comment-menu">
+            <% if comment.student == current_student %>
+              <div class="menu-item right">
+                <%= link_to "コメントを削除する", video_comment_path(comment.video_id, comment.id), method: :delete, remote: true, class: "comment_destroy gray" %>
+              </div>
+            <% else %>
+              <div class="menu-item gray">
+                <div class="high dis-ib pa-10">
+                  <i class="fas fa-thumbs-up"></i>
+                  <span>123</span>
+                </div>
+                <div class="low dis-ib pa-10">
+                  <i class="fas fa-thumbs-down"></i>
+                  <span>123</span>
+                </div>
+                <div class="response dis-ib pa-10">
+                  <%= link_to "返信", new_comment_reply_comment_path(comment), class:"gray" %>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
     <% end %>
-    <p class="right">
+    <p class="center pa-t-30 gray">
       <a data-toggle="collapse" href="#collapseCommentIndex" role="button" aria-expanded="false" aria-controls="collapseExample">
         もっと見る
       </a>

@@ -41,9 +41,13 @@
           <%= link_to "コミュニティに参加する", add_community_path(@community), method: :post, class:"btn btn-info wid-100" %>
         <% end %>
       </div>
+      <h5 class="title">コミュニケーション</h5>
+      <div class="tweet-link right">
+        <%= link_to "つぶやく", new_community_tweet_path(@community), class: "btn btn-primary" %>
+      </div>
       <hr>
       <% if @community.joined?(current_student) %>
-        
+        <%= render "tweets/index", tweets: @tweets %>
       <% end %>
     </div>
   </div>

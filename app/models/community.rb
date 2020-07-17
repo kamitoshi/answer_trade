@@ -5,6 +5,8 @@ class Community < ApplicationRecord
 
   belongs_to :admin, class_name: "Student"
 
+  has_many :tweets, dependent: :destroy
+
   validates :name, presence: true
 
   # 引数で渡された生徒がコミュニティに属しているか判別する

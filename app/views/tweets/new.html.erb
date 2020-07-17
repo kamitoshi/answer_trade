@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="title">つぶやく</h3>
+
+      <div class="tweet_form-box">
+        <%= form_for @tweet, url: community_tweets_path(params[:community_id]) do |f|%>
+
+          <div class="field pa-y-30">
+            <% text = "今の気持ちや勉強している内容をみんなに共有してみよう！" %>
+            <%= f.text_area :detail, autofocus: true, autocomplete: "detail", class:"form-control", placeholder: text, style:"height:300px" %>
+          </div>
+
+          <div class="actions right">
+            <%= f.submit "つぶやく", class:"btn btn-primary" %>
+          </div>
+          
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -11,7 +11,7 @@
       <div class="reply-menu">
         <% if reply.student == current_student %>
           <div class="menu-item right">
-            <%= link_to "削除する", tweet_reply_tweet_path(reply.tweet_id, reply.id), method: :delete, remote: true, class: "reply_destroy gray" %>
+            <%= link_to "削除する", tweet_reply_tweet_path(reply.tweet_id, reply.id), method: :delete, class: "reply_destroy gray" %>
           </div>
         <% end %>
       </div>

@@ -11,7 +11,7 @@
       <div class="tweet-menu">
         <% if tweet.student == current_student %>
           <div class="menu-item right">
-            <%= link_to "削除する", community_tweet_path(tweet.community_id, tweet.id), method: :delete, remote: true, class: "tweet_destroy gray" %>
+            <%= link_to "削除する", community_tweet_path(tweet.community_id, tweet.id), method: :delete, class: "tweet_destroy gray" %>
           </div>
         <% else %>
           <div class="menu-item gray">

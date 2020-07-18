@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_18_033546) do
+ActiveRecord::Schema.define(version: 2020_07_18_091423) do
 
   create_table "categories", force: :cascade do |t|
     t.string "subject"
@@ -49,6 +49,17 @@ ActiveRecord::Schema.define(version: 2020_07_18_033546) do
     t.datetime "updated_at", null: false
     t.index ["admin_id"], name: "index_communities_on_admin_id"
     t.index ["name"], name: "index_communities_on_name", unique: true
+  end
+
+  create_table "educational_backgrounds", force: :cascade do |t|
+    t.integer "student_id"
+    t.string "primary_school"
+    t.string "middle_school"
+    t.string "high_school"
+    t.boolean "is_pablic", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_educational_backgrounds_on_student_id"
   end
 
   create_table "evaluations", force: :cascade do |t|

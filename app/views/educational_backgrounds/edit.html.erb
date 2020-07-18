@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="title">学歴登録</h3>
+      <div class="message-box">
+        <p>
+          学歴を登録してください。<br>
+          学歴を登録しておくことで、同じ学力レベルの人たちと知り合うことに役立ちます。<br>
+          また、動画もレベルに応じた動画が自動的にリマインドされるようになります。<br>
+          「公開する」にチャックを入れなければ一般に公開されることはありません。
+        </p>
+      </div>
+      <div class="educational_background_edit-main">
+        <%= render "educational_backgrounds/form", url: student_educational_background_path(current_student, current_student.educational_background) %>
+      </div>
+    </div>
+  </div>
+</div>
+

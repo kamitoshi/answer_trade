@@ -1,0 +1,30 @@
+<%= form_for @educational_background, url: url do |f|%>
+
+  <p class="mini-title pa-y-30"><span>学歴</span></p>
+
+  <div class="field pa-y-30">
+    <%= f.label :primary_school, "小学校名" %>
+    <%= f.text_field :primary_school, autofocus: true, autocomplete: "primary_school", class:"form-control", placeholder: "〇〇区立〇〇小学校" %>
+  </div>
+
+  <div class="field pa-y-30">
+    <%= f.label :middle_school, "中学校名" %>
+    <%= f.text_field :middle_school, autofocus: true, autocomplete: "middle_school", class:"form-control", placeholder: "〇〇区立〇〇中学校" %>
+  </div>
+
+  <div class="field pa-y-30">
+    <%= f.label :high_school, "高等学校名" %>
+    <%= f.text_field :high_school, autofocus: true, autocomplete: "high_school", class:"form-control", placeholder: "〇〇都立〇〇高等学校" %>
+  </div>
+
+  <div class="field pa-y-30">
+    <%= f.check_box :is_pablic, {class: "check_box"}, true, false %>
+    <%= f.label :is_pablic, "公開する" %>
+  </div>
+
+
+  <div class="actions right">
+    <%= f.submit "登録する", class:"btn btn-primary" %>
+  </div>
+  
+<% end %>

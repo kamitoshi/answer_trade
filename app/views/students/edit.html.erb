@@ -35,23 +35,6 @@
             <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", class:"form-control", style:"height:300px" %>
           </div>
 
-          <p class="mini-title pa-y-30"><span>学歴</span></p>
-
-          <div class="field pa-y-30">
-            <%= f.label :primary_school, "小学校名" %><br />
-            <%= f.number_field :primary_school, autofocus: true, autocomplete: "primary_school", class:"form-control", placeholder: "〇〇区立〇〇小学校" %>
-          </div>
-
-          <div class="field pa-y-30">
-            <%= f.label :middle_school, "中学校名" %><br />
-            <%= f.text_field :middle_school, autofocus: true, autocomplete: "middle_school", class:"form-control", placeholder: "〇〇区立〇〇中学校" %>
-          </div>
-
-          <div class="field pa-y-30">
-            <%= f.label :high_school, "高等学校名" %><br />
-            <%= f.text_field :high_school, autofocus: true, autocomplete: "high_school", class:"form-control", placeholder: "〇〇都立〇〇高等学校" %>
-          </div>
-
           <div class="actions right">
             <%= f.submit "変更する", class:"btn btn-primary" %>
           </div>
@@ -62,6 +45,11 @@
 
     <div class="col-4 pa-30">
       <div class="student_edit-side wid-70 ma-a">
+        <% if @student.educational_background.present? %>
+          <%= link_to "学歴登録", edit_student_educational_background_path(@student, @student.educational_background), class:"btn btn-outline-info wid-100 ma-y-10" %>
+        <% else %>
+          <%= link_to "学歴登録", new_student_educational_background_path(@student), class:"btn btn-outline-info wid-100 ma-y-10" %>
+        <% end %>
         <%= link_to "パスワード変更", edit_student_registration_path, class:"btn btn-outline-info wid-100 ma-y-10" %>
         <%= link_to "退会する", student_path(current_student), method: :delete, class:"btn btn-danger wid-100 ma-y-10" %>
       </div>

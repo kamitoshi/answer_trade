@@ -42,7 +42,19 @@ Student.create!(
     email: "test#{n + 1}@mail.com",
     password: "test#{(n+1).to_s+(n+1).to_s}",
     password_confirmation: "test#{(n+1).to_s+(n+1).to_s}",
-    grade: Random.new.rand(1..13)
+    grade: Random.new.rand(1..13),
+    introduction: "自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。"
+  )
+end
+
+# videos #
+10.times do |n|
+  Video.create!(
+    student_id: Random.new.rand(1..50),
+    category_id: Random.new.rand(5..10),
+    academic_stage: 2,
+    title: "【青色チャート】P.5　例題#{n+1}の解説",
+    detail: "動画の概要が入ります。動画の概要が入ります。動画の概要が入ります。動画の概要が入ります。動画の概要が入ります。動画の概要が入ります。"
   )
 end
 

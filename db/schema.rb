@@ -129,10 +129,6 @@ ActiveRecord::Schema.define(version: 2020_07_18_033546) do
     t.integer "grade", null: false
     t.text "introduction"
     t.string "image"
-    t.integer "ticket_count", default: 0
-    t.string "primary_school"
-    t.string "middle_school"
-    t.string "high_school"
     t.boolean "is_subscribe", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

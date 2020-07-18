@@ -46,7 +46,7 @@ class Students::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :grade, :introduction, :image, :ticket_count, :primary_school, :middle_school, :high_school, :is_subscribe])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :grade, :introduction, :image, :is_subscribe])
   end
 
   # If you have extra params to permit, append them to the sanitizer.

@@ -1,0 +1,16 @@
+<% tweet_evaluation = tweet.tweet_evaluations.find_by(student_id: current_student.id) %>
+<% if tweet_evaluation.present? %>
+  <div class="good dis-ib pa-10">
+    <%= link_to tweet_tweet_evaluation_path(tweet.id, tweet_evaluation.id), method: :delete, remote: true, class: "evaluation_destroy green" do %>
+      <i class="fas fa-thumbs-up"></i>
+      <span><%= tweet.tweet_evaluations.count %></span>
+    <% end %>
+  </div>
+<% else %>
+  <div class="ungood dis-ib pa-10">
+    <%= link_to tweet_tweet_evaluations_path(tweet_id: tweet.id), method: :post, remote: true, class: "valuation_create gray" do %>
+      <i class="fas fa-thumbs-up"></i>
+      <span><%= tweet.tweet_evaluations.count %></span>
+    <% end %>
+  </div>
+<% end %>

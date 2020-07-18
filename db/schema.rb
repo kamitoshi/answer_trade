@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_17_110431) do
+ActiveRecord::Schema.define(version: 2020_07_18_015848) do
 
   create_table "categories", force: :cascade do |t|
     t.string "subject"
     t.string "subject_content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comment_evaluations", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "comment_id"
+    t.boolean "is_good", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_comment_evaluations_on_comment_id"
+    t.index ["student_id", "comment_id"], name: "index_comment_evaluations_on_student_id_and_comment_id", unique: true
+    t.index ["student_id"], name: "index_comment_evaluations_on_student_id"
   end
 
   create_table "comments", force: :cascade do |t|

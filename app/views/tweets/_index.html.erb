@@ -31,7 +31,7 @@
       </div>
       <% if tweet.reply_tweets.any? %>
         <h5>返信一覧</h5>
-        <%= render partial: "tweets/reply_index", locals: {reply_tweets: tweet.reply_tweets, tweet: tweet} %>
+        <%= render partial: "tweets/reply_index", locals: {reply_tweets: tweet.reply_tweets.reverse, tweet: tweet} %>
         <% if tweet.reply_tweets.count > 10 %>
           <div class="index-link">
             <%= link_to "さらに返信を見る", tweet_path(tweet) %>

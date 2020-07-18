@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_18_015848) do
+ActiveRecord::Schema.define(version: 2020_07_18_033546) do
 
   create_table "categories", force: :cascade do |t|
     t.string "subject"
@@ -138,6 +138,17 @@ ActiveRecord::Schema.define(version: 2020_07_18_015848) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
+  end
+
+  create_table "tweet_evaluations", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "tweet_id"
+    t.boolean "is_good"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id", "tweet_id"], name: "index_tweet_evaluations_on_student_id_and_tweet_id", unique: true
+    t.index ["student_id"], name: "index_tweet_evaluations_on_student_id"
+    t.index ["tweet_id"], name: "index_tweet_evaluations_on_tweet_id"
   end
 
   create_table "tweets", force: :cascade do |t|

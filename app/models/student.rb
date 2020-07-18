@@ -15,6 +15,7 @@ class Student < ApplicationRecord
   has_many :evaluations, dependent: :nullify
   has_many :tweets, dependent: :nullify
   has_many :reply_tweets, dependent: :nullify
+  has_many :tweet_evaluations, dependent: :nullify
   has_many :reply_comments, dependent: :nullify
   has_many :comment_evaluations, dependent: :nullify
 

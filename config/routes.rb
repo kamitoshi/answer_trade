@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'educational_backgrounds/new'
+  get 'educational_backgrounds/edit'
   root 'home#top'
   get 'home/about'
   devise_for :students, controllers:{
@@ -6,7 +8,9 @@ Rails.application.routes.draw do
     passwords: "students/passwords",
     registrations: "students/registrations"
   }
-  resources :students, only:[:index, :show, :edit, :update, :destroy]
+  resources :students, only:[:index, :show, :edit, :update, :destroy] do
+    resources :educational_backgrounds, only:[:new, :create, :edit, :update]
+  end
   resources :follows, only:[:create, :destroy]
   resources :requests do
     get "videos/request_new"

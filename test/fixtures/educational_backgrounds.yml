@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student: one
+  primary_school: MyString
+  middle_school: MyString
+  high_school: MyString
+  is_pablic: false
+
+two:
+  student: two
+  primary_school: MyString
+  middle_school: MyString
+  high_school: MyString
+  is_pablic: false

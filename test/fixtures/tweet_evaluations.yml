@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student: one
+  tweet: one
+  is_good: false
+
+two:
+  student: two
+  tweet: two
+  is_good: false

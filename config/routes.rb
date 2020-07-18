@@ -25,9 +25,11 @@ Rails.application.routes.draw do
   end
   resources :tweets, only:[:show] do
     resources :reply_tweets, only:[:new, :create, :destroy]
+    resources :tweet_evaluations, only:[:create, :destroy]
   end
   resources :comments, only:[:show] do
     resources :reply_comments, only:[:new, :create, :destroy]
+    resources :comment_evaluations, only:[:create, :destroy]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

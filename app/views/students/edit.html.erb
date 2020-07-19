@@ -1,15 +1,22 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-12">
-      <h3 class="title">プロフィール変更</h3>
-    </div>
+    <h3 class="title">プロフィール変更</h3>
   </div>
+  <%= form_for @student do |f|%>
+    <div class="row">
 
-  <div class="row">
-    <div class="col-8">
-      <div class="student_edit-main">
-        <%= form_for @student do |f|%>
+      <div class="col-3">
+        <h5 class="pa-20 center">プロフィール画像登録</h5>
+        <div class="student_image-box center">
+          <%= image_tag @student.info_image, id:"img-prev" %>
+        </div>
+        <div class="field pa-y-30 center">
+          <%= f.file_field :image %>
+        </div>
+      </div>
 
+      <div class="col-6">
+        <div class="student_edit-main">
           <div class="field pa-y-30">
             <%= f.label :name, "ニックネーム" %>
             <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control", placeholder: "ニックネーム" %>
@@ -18,7 +25,7 @@
           <div class="field pa-y-30">
             <%= f.label :grade, "学年" %><br>
             <% Student.grades_i18n.invert.each do |grade| %>
-              <div class="radio_btn dis-ib pa-10">
+              <div class="radio_btn dis-ib pa-20">
                 <%= f.radio_button :grade, grade[1] %>
                 <%= f.label :grade, grade[0], value: grade[1] %>
               </div>
@@ -37,29 +44,27 @@
 
           <div class="actions right">
             <%= f.submit "変更する", class:"btn btn-primary" %>
-          </div>
-          
-        <% end %>
+          </div>  
+        </div>
+      </div>
+  
+      <div class="col-3 pa-30">
+        <div class="student_edit-side wid-70 ma-a">
+          <% if @student.educational_background.present? %>
+            <%= link_to "学歴登録", edit_student_educational_background_path(@student, @student.educational_background), class:"btn btn-outline-info wid-100 ma-y-10" %>
+          <% else %>
+            <%= link_to "学歴登録", new_student_educational_background_path(@student), class:"btn btn-outline-info wid-100 ma-y-10" %>
+          <% end %>
+          <% if @student.aspire.present? %>
+            <%= link_to "志望校登録", edit_student_aspire_path(@student, @student.aspire), class:"btn btn-outline-info wid-100 ma-y-10" %>
+          <% else %>
+            <%= link_to "志望校登録", new_student_aspire_path(@student), class:"btn btn-outline-info wid-100 ma-y-10" %>
+          <% end %>
+          <%= link_to "パスワード変更", edit_student_registration_path, class:"btn btn-outline-info wid-100 ma-y-10" %>
+          <%= link_to "退会する", student_path(current_student), method: :delete, class:"btn btn-danger wid-100 ma-y-10" %>
+        </div>
       </div>
     </div>
-
-    <div class="col-4 pa-30">
-      <div class="student_edit-side wid-70 ma-a">
-        <% if @student.educational_background.present? %>
-          <%= link_to "学歴登録", edit_student_educational_background_path(@student, @student.educational_background), class:"btn btn-outline-info wid-100 ma-y-10" %>
-        <% else %>
-          <%= link_to "学歴登録", new_student_educational_background_path(@student), class:"btn btn-outline-info wid-100 ma-y-10" %>
-        <% end %>
-        <% if @student.aspire.present? %>
-          <%= link_to "志望校登録", edit_student_aspire_path(@student, @student.aspire), class:"btn btn-outline-info wid-100 ma-y-10" %>
-        <% else %>
-          <%= link_to "志望校登録", new_student_aspire_path(@student), class:"btn btn-outline-info wid-100 ma-y-10" %>
-        <% end %>
-        <%= link_to "パスワード変更", edit_student_registration_path, class:"btn btn-outline-info wid-100 ma-y-10" %>
-        <%= link_to "退会する", student_path(current_student), method: :delete, class:"btn btn-danger wid-100 ma-y-10" %>
-      </div>
-    </div>
-
-  </div>
+  <% end %>
 </div>
 

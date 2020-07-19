@@ -39,6 +39,8 @@ class Student < ApplicationRecord
   # adminになったコミュニティ
   has_many :communities, dependent: :nullify, foreign_key: "admin_id"
 
+  mount_uploader :image, ImageUploader
+
   validates :name, presence: true
   validates :grade, presence: true
 

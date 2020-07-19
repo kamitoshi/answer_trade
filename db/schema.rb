@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_07_19_003554) do
     t.string "primary_school"
     t.string "middle_school"
     t.string "high_school"
-    t.boolean "is_pablic", default: false
+    t.boolean "is_public", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_educational_backgrounds_on_student_id"

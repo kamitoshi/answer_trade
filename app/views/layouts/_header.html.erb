@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="Navber">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/">ホーム <span class="sr-only">(現位置)</span></a>
+          <%= link_to "マイページ", student_path(current_student), class: "nav-link" %>
         </li>
         <li class="nav-item active">
           <%= link_to "登録生徒一覧", students_path, class: "nav-link" %>

@@ -5,7 +5,7 @@ class CreateEducationalBackgrounds < ActiveRecord::Migration[5.2]
       t.string :primary_school
       t.string :middle_school
       t.string :high_school
-      t.boolean :is_pablic, default: false
+      t.boolean :is_public, default: false
 
       t.timestamps
     end

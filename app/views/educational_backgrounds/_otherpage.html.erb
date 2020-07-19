@@ -1,0 +1,36 @@
+<% if @student.educational_background.present? %>
+  <% if @student.educational_background.is_public? %>
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th scope="row">小学校</th>
+          <% if @student.educational_background.primary_school.present? %>
+            <td><%= @student.educational_background.primary_school %></td>
+          <% else %>
+            <td>登録されていません</td>
+          <% end %>
+        </tr>
+        <tr>
+          <th scope="row">中学校</th>
+          <% if @student.educational_background.middle_school.present? %>
+            <td><%= @student.educational_background.middle_school %></td>
+          <% else %>
+            <td>登録されていません</td>
+          <% end %>
+        </tr>
+        <tr>
+          <th scope="row">高校</th>
+          <% if @student.educational_background.high_school.present? %>
+            <td><%= @student.educational_background.high_school %></td>
+          <% else %>
+            <td>登録されていません</td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+  <% else %>
+    <h5 class="pa-50">学歴は非公開です</h5>
+  <% end %>
+<% else %>
+  <h5 class="pa-50">学歴は非公開です</h5>
+<% end %>

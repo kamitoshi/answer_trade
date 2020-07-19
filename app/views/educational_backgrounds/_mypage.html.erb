@@ -1,0 +1,50 @@
+<table class="table table-borderless">
+  <% if @student.educational_background.present? %>
+    <% if @student.educational_background.is_public? %>
+      <p class="gray pa-20">（学歴は他のユーザーに対して<strong>公開</strong>しています）</p>
+    <% else %>
+      <p class="gray pa-20">（学歴は他のユーザーに対して<strong>非公開</strong>になっています）</p>
+    <% end %>
+    <tbody>
+      <tr>
+        <th scope="row">小学校</th>
+        <% if @student.educational_background.primary_school.present? %>
+          <td><%= @student.educational_background.primary_school %></td>
+        <% else %>
+          <td>登録されていません</td>
+        <% end %>
+      </tr>
+      <tr>
+        <th scope="row">中学校</th>
+        <% if @student.educational_background.middle_school.present? %>
+          <td><%= @student.educational_background.middle_school %></td>
+        <% else %>
+          <td>登録されていません</td>
+        <% end %>
+      </tr>
+      <tr>
+        <th scope="row">高校</th>
+        <% if @student.educational_background.high_school.present? %>
+          <td><%= @student.educational_background.high_school %></td>
+        <% else %>
+          <td>登録されていません</td>
+        <% end %>
+      </tr>
+    </tbody>
+  <% else %>
+    <tbody>
+      <tr>
+        <th scope="row">小学校</th>
+        <td>登録されていません</td>
+      </tr>
+      <tr>
+        <th scope="row">中学校</th>
+        <td>登録されていません</td>
+      </tr>
+      <tr>
+        <th scope="row">高校</th>
+        <td>登録されていません</td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>

@@ -50,6 +50,11 @@
         <% else %>
           <%= link_to "学歴登録", new_student_educational_background_path(@student), class:"btn btn-outline-info wid-100 ma-y-10" %>
         <% end %>
+        <% if @student.aspire.present? %>
+          <%= link_to "志望校登録", edit_student_aspire_path(@student, @student.aspire), class:"btn btn-outline-info wid-100 ma-y-10" %>
+        <% else %>
+          <%= link_to "志望校登録", new_student_aspire_path(@student), class:"btn btn-outline-info wid-100 ma-y-10" %>
+        <% end %>
         <%= link_to "パスワード変更", edit_student_registration_path, class:"btn btn-outline-info wid-100 ma-y-10" %>
         <%= link_to "退会する", student_path(current_student), method: :delete, class:"btn btn-danger wid-100 ma-y-10" %>
       </div>

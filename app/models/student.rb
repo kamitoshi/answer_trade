@@ -11,6 +11,7 @@ class Student < ApplicationRecord
 
   has_one :educational_background, dependent: :destroy
   has_one :watch_point, dependent: :destroy
+  has_one :aspire, dependent: :destroy
   has_many :requests, dependent: :destroy
   has_many :videos, dependent: :nullify
   has_many :comments, dependent: :nullify

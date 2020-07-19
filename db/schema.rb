@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_18_091423) do
+ActiveRecord::Schema.define(version: 2020_07_19_003554) do
 
   create_table "categories", force: :cascade do |t|
     t.string "subject"
@@ -182,6 +182,14 @@ ActiveRecord::Schema.define(version: 2020_07_18_091423) do
     t.index ["request_id"], name: "index_videos_on_request_id"
     t.index ["student_id"], name: "index_videos_on_student_id"
     t.index ["title"], name: "index_videos_on_title"
+  end
+
+  create_table "watch_points", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "point", default: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_watch_points_on_student_id"
   end
 
   create_table "watches", force: :cascade do |t|

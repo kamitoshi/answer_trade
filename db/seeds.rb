@@ -37,7 +37,7 @@ Student.create!(
   grade: Random.new.rand(1..13)
 )
 50.times do |n|
-  Student.create!(
+  student = Student.create!(
     name: "テストユーザー#{n}",
     email: "test#{n + 1}@mail.com",
     password: "test#{(n+1).to_s+(n+1).to_s}",
@@ -45,6 +45,8 @@ Student.create!(
     grade: Random.new.rand(1..13),
     introduction: "自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。"
   )
+    point = student.build_watch_point
+    point.save
 end
 
 # videos #

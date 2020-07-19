@@ -40,7 +40,7 @@ class EducationalBackgroundsController < ApplicationController
 
   private
   def educational_background_params
-    params.require(:educational_background).permit(:student_id, :primary_school, :middle_school, :high_school, :is_pablic)
+    params.require(:educational_background).permit(:student_id, :primary_school, :middle_school, :high_school, :is_public)
   end
 
   def set_educational_background

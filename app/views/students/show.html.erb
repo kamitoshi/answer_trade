@@ -30,9 +30,15 @@
     </div>
     <div class="col-7">
       <div class="student_info-box">
-        
         <div class="grade">
           <h4>学年：<%= @student.grade_i18n %></h4>
+        </div>
+        <div class="educational_background pa-t-30">
+          <% if @student.aspire.present? %>
+            <h4>志望校：<%= @student.aspire.school_name %>　<%= @student_aspire.faculty %></h4>
+          <% else %>
+            <h4>志望校：登録されていません</h4>
+          <% end %>
         </div>
         <div class="educational_background pa-t-30">
           <h4>学歴</h4>

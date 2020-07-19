@@ -26,10 +26,10 @@ class EducationalBackgroundsController < ApplicationController
   def update
     if @educational_background.student == current_student
       if @educational_background.update(educational_background_params)
-        flash[:success] = "学歴を編集しました"
+        flash[:success] = "学歴を登録しました"
         redirect_to student_path(current_student)
       else
-        flash.now[:danger] = "学歴を編集できませんでした"
+        flash.now[:danger] = "学歴を登録できませんでした"
         render :edit
       end
     else

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'aspires/new'
+  get 'aspires/edit'
   get 'educational_backgrounds/new'
   get 'educational_backgrounds/edit'
   root 'home#top'
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   }
   resources :students, only:[:index, :show, :edit, :update, :destroy] do
     resources :educational_backgrounds, only:[:new, :create, :edit, :update]
+    resources :aspires, only:[:new, :create, :edit, :update]
   end
   resources :follows, only:[:create, :destroy]
   resources :requests do

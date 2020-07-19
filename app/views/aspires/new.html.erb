@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="title">志望校登録</h3>
+      <div class="message-box">
+        <p>
+          志望校を登録してください。<br>
+          志望校を登録しておくことで、同じ学力レベルの人たちと知り合うことに役立ちます。<br>
+          また、動画もレベルに応じた動画が自動的にリマインドされるようになります。<br>
+          <strong>ここでは登録せず、後からプロフィール編集で志望校は登録できます。</strong><br>
+          その場合は、「スキップ」を押してください。
+        </p>
+        <%= link_to "スキップ", student_path(current_student), class:"btn btn-danger" %>
+      </div>
+      <div class="aspire_edit-main">
+        <%= render "aspires/form", url: student_aspires_path(current_student) %>
+      </div>
+    </div>
+  </div>
+</div>

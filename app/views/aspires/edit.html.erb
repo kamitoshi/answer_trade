@@ -7,14 +7,11 @@
           学歴を登録してください。<br>
           学歴を登録しておくことで、同じ学力レベルの人たちと知り合うことに役立ちます。<br>
           また、動画もレベルに応じた動画が自動的にリマインドされるようになります。<br>
-          「公開する」にチャックを入れなければ一般に公開されることはありません。<br>
-          <strong>ここでは登録せず、後からプロフィール編集で学歴は登録できます。</strong><br>
-          その場合は、「スキップ」を押してください。
+          「公開する」にチャックを入れなければ一般に公開されることはありません。
         </p>
-        <%= link_to "スキップ", new_student_aspire_path(current_student), class:"btn btn-danger" %>
       </div>
       <div class="educational_background_edit-main">
-        <%= render "educational_backgrounds/form", url: student_educational_backgrounds_path(current_student) %>
+        <%= render "educational_backgrounds/form", url: student_educational_background_path(current_student, current_student.educational_background) %>
       </div>
     </div>
   </div>

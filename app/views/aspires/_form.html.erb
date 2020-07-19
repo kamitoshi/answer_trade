@@ -1,0 +1,17 @@
+<%= form_for @aspire, url: url do |f|%>
+
+  <div class="field pa-y-30">
+    <%= f.label :school_name, "志望校名" %>
+    <%= f.text_field :school_name, autofocus: true, autocomplete: "school_name", class:"form-control", placeholder: "東京大学" %>
+  </div>
+
+  <div class="field pa-y-30">
+    <%= f.label :faculty, "志望学部・学科" %>
+    <%= f.text_field :faculty, autofocus: true, autocomplete: "faculty", class:"form-control", placeholder: "理学部" %>
+  </div>
+
+  <div class="actions right">
+    <%= f.submit "登録する", class:"btn btn-primary" %>
+  </div>
+  
+<% end %>

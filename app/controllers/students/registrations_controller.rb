@@ -10,9 +10,11 @@ class Students::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    point = resource.build_watch_point
+    point.save
+  end
 
   # GET /resource/edit
   # def edit

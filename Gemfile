@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveStorage variant
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'streamio-ffmpeg'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -11,6 +11,8 @@ class Video < ApplicationRecord
     primary: 0, middle: 1, high: 2
   }
 
+  mount_uploader :content, VideoUploader
+
   validates :academic_stage, presence: true
   validates :title, presence: true
   # validates :content, presence: true

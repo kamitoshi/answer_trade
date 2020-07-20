@@ -12,8 +12,8 @@
         <% if @videos.any? %>
           <% @videos.each do |video| %>
             <div class="video_index-item">
-              <div class="thumnail-image"></div>
-              <div class="info">
+              <div class="thumnail-image"><%= video_tag video.content.to_s, width: "100%", height: "100%" %></div>
+              <div class="info border">
                 <h6 class="info-title pa-y-10"><%= video.title %></h6>
                 <div class="info-detail pa-10">
                   <p><%= video.student.name %></p>

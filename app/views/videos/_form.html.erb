@@ -1,15 +1,19 @@
 <%= form_for @video do |f| %>
 
   <div class="field center">
-    <div class="video_content_box pa-20">
-      <% if @video.content.blank? %>
-        <%= image_tag "no_movie.png", :size => "700x500", id: "video_prev" %>
-      <% else %>
-        <%= video_tag @movie.content, :autoplay => true, id: "video_prev" %>
-      <% end %>
+    <div class="video_content_box pa-20 ma-x-50">
+      <div class="video_view-box">
+        <div class="content-box">
+          <div class="content">
+            <%= video_tag @video.content.to_s, width: "100%", height: "100%" %>
+          </div>
+        </div>
+      </div>
     </div>
-    <span>※動画を保存してください</span><br>
-    <%= f.file_field :content, id: "input_video" %>
+    <div class="field pa-y-30">
+      <%= f.label :content, "※動画を保存してください" %><br>
+      <%= f.file_field :content, accept: 'video/*' %>
+    </div>
   </div>
 
   <div class="field pa-y-30">
